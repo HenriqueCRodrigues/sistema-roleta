@@ -21,7 +21,7 @@ export default {
       let spin = document.getElementById('spin');
       spin.style = '';
       spin.style.animation = 'spin 1s linear infinite';
-      axios.get('http://localhost:7070/api/spin-discount')
+      axios.get(process.env.VUE_APP_API_URL+'spin-discount')
       .then(function(response){
         let discount = response.data.data.discount;
 
@@ -91,7 +91,6 @@ export default {
 
           spin.style = 'transform: rotate('+array[discount]+')';
 
-          console.log(array)
           let message = document.getElementById('message');
           if (discount > 0) {
             message.innerHTML = 'Parabéns você tem '+discount+' de desconto.';
@@ -127,9 +126,4 @@ li {
 a {
   color: #42b983;
 }
-
-.animation-1x {
-  animation:spin 1s linear infinite;
-}
-
 </style>
