@@ -68,11 +68,20 @@ export default {
             2 - 300deg
             0 - 330deg
           */
+          let aux = [];
           let array = [];
           array[0] = '330deg';
-          array[1] = '60deg OR 240deg';
+          
+          aux[0] = '60deg';
+          aux[1] = '240deg';
+          
+          array[1] = aux[Math.floor(Math.random() * 2)];
           array[2] = '300deg';
-          array[5] = '30deg OR 210deg';
+
+          aux[0] = '30deg';
+          aux[1] = '210deg';
+
+          array[5] = aux[Math.floor(Math.random() * 2)];
           array[10] = '0deg';
           array[15] = '120deg';
           array[20] = '180deg';
