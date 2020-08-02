@@ -21,7 +21,7 @@ export default {
       let spin = document.getElementById('spin');
       spin.style = '';
       spin.style.animation = 'spin 1s linear infinite';
-      axios.get('http://localhost:7070/api/spin-discount')
+      axios.get(process.env.VUE_APP_API_URL+'spin-discount')
       .then(function(response){
         let discount = response.data.data.discount;
 
@@ -68,11 +68,20 @@ export default {
             2 - 300deg
             0 - 330deg
           */
+          let aux = [];
           let array = [];
           array[0] = '330deg';
-          array[1] = '60deg OR 240deg';
+          
+          aux[0] = '60deg';
+          aux[1] = '240deg';
+          
+          array[1] = aux[Math.floor(Math.random() * 2)];
           array[2] = '300deg';
-          array[5] = '30deg OR 210deg';
+
+          aux[0] = '30deg';
+          aux[1] = '210deg';
+
+          array[5] = aux[Math.floor(Math.random() * 2)];
           array[10] = '0deg';
           array[15] = '120deg';
           array[20] = '180deg';
@@ -82,7 +91,6 @@ export default {
 
           spin.style = 'transform: rotate('+array[discount]+')';
 
-          console.log(array)
           let message = document.getElementById('message');
           if (discount > 0) {
             message.innerHTML = 'Parabéns você tem '+discount+' de desconto.';
@@ -118,9 +126,4 @@ li {
 a {
   color: #42b983;
 }
-
-.animation-1x {
-  animation:spin 1s linear infinite;
-}
-
 </style>
